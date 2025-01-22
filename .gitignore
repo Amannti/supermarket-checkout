@@ -4,27 +4,27 @@
 ### Angular ###
 ## Angular ##
 # compiled output
-dist/
-tmp/
-app/**/*.js
-app/**/*.js.map
+frontend/dist/
+frontend/tmp/
+frontend/app/**/*.js
+frontend/app/**/*.js.map
 
 # dependencies
-node_modules/
-bower_components/
+frontend/node_modules/
+frontend/bower_components/
 
 # IDEs and editors
 .idea/
 
 # misc
-.sass-cache/
-connect.lock/
-coverage/
-libpeerconnection.log/
-npm-debug.log
-testem.log
-typings/
-.angular/
+frontend/.sass-cache/
+frontend/connect.lock/
+frontend/coverage/
+frontend/libpeerconnection.log/
+frontend/npm-debug.log
+frontend/testem.log
+frontend/typings/
+frontend/.angular/
 
 # e2e
 e2e/*.js
@@ -62,6 +62,8 @@ e2e/*.map
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+.gradle
+backend/build
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -73,7 +75,7 @@ e2e/*.map
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
-# *.iml
+*.iml
 # *.ipr
 
 # CMake
