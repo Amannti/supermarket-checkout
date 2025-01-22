@@ -11,7 +11,7 @@ public class ItemMapper {
     ItemWithOffersDto mapWithActiveOffers(Item item) {
         return new ItemWithOffersDto(item.getId(), item.getName(), item.getPrice(), item.getOffers()
                 .stream()
-                .filter(Offer::isActive)
+                .filter(Offer::isActive)  // ToDo Consider remove active for offers
                 .map(offer -> new OfferDto(offer.getPieces(), offer.getBundlePrice()))
                 .toList()
         );
