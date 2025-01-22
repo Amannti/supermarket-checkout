@@ -1,0 +1,9 @@
+<div class="card" *ngIf="item() as item">
+  <span>{{ item.name }} <b>{{ item.price }} $</b></span>
+  <div class="offers" *ngIf="item.offers.length > 0">
+    <h3><i>Special offers this week</i></h3>
+    <span *ngFor="let offer of item.offers">
+      {{ offer.pieces }} for the price of {{offer.bundlePrice}} $
+    </span>
+  </div>
+</div>
