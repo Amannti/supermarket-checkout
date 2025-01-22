@@ -1,0 +1,13 @@
+services:
+  supermarket-checkout-db:
+    image: postgres:15
+    container_name: supermarket-checkout
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: supermarket-checkout
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    restart: unless-stopped
