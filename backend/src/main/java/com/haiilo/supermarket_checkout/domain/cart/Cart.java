@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,7 +18,7 @@ public class Cart {
 
     @Type(JsonBinaryType.class)
     @Column(columnDefinition = "jsonb", nullable = false)
-    private List<CartItem> items;
+    private List<CartItem> items = new ArrayList<>();
 
     private double total;
 

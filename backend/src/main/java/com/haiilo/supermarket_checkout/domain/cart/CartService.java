@@ -26,7 +26,7 @@ public class CartService {
     }
 
     public Cart addItem(Long itemId) {
-        var cart = this.cartRepository.findByPaidIsTrue();
+        var cart = this.cartRepository.findByPaidIsFalse();
         if (cart == null) {
             cart = new Cart();
         }
