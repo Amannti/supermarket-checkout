@@ -5,7 +5,7 @@ import {ItemWithOffersDto} from "../dto/ItemWithOffersDto";
 export class ItemService {
   private backendService = inject(BackendService);
 
-  getItems(): Signal<ItemWithOffersDto[] | undefined> {
+  getItems() {
     return this.backendService.get<ItemWithOffersDto[]>('items');
   }
 }

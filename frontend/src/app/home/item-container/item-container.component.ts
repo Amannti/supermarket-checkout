@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {ItemWithOffersDto} from "../../dto/ItemWithOffersDto";
 import {ItemCardComponent} from "./item-card/item-card.component";
 import {NgForOf, NgIf} from "@angular/common";
@@ -16,4 +16,5 @@ import {NgForOf, NgIf} from "@angular/common";
 })
 export class ItemContainerComponent {
   items = input.required<ItemWithOffersDto[] | undefined>();
+  addItem = output<number>();
 }

@@ -20,5 +20,5 @@ public class Offer {
 
     private double bundlePrice;
 
-    private boolean isActive;
+    private boolean active;
 }

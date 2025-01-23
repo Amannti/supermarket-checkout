@@ -1,0 +1,19 @@
+<div>
+  <div *ngIf="cart() as cart" class="cart">
+    <div class="header">
+      <span>Item</span>
+      <span>Price per Item</span>
+      <span>Total</span>
+    </div>
+    <hr>
+    <app-cart-item-position *ngFor="let item of cart.items" [item]="item"/>
+    <hr>
+    <div class="total">
+      <b>Total: {{ cart.total | number:'1.2-2' }} $</b>
+    </div>
+    <button>Pay</button>
+  </div>
+  <div *ngIf="!cart()">
+    Your cart is empty, please add some items!
+  </div>
+</div>

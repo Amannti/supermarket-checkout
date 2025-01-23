@@ -11,4 +11,5 @@ INSERT INTO Offer (item_id, pieces, bundle_price)
 VALUES (1, 2, 45),
        (2, 3, 130),
        (5, 4, 100),
+       (5, 5, 110),
        (7, 10, 500);
