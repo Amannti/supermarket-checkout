@@ -1,12 +1,12 @@
 <div>
-  <div *ngIf="cart() as cart" class="cart">
+  <div *ngIf="cart() as cart" class="cart"> <!-- ToDo what if cart is there but without items -->
     <div class="header">
       <span>Item</span>
       <span>Price per Item</span>
       <span>Total</span>
     </div>
     <hr>
-    <app-cart-item-position *ngFor="let item of cart.items" [item]="item"/>
+    <app-cart-item-position *ngFor="let item of cart.items" [item]="item" (removeItem)="removeItem.emit($event)"/>
     <hr>
     <div class="total">
       <b>Total: {{ cart.total | number:'1.2-2' }} $</b>

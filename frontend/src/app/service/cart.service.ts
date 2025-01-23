@@ -12,4 +12,8 @@ export class CartService {
   addItem(itemId: number) {
     return this.backendService.post<CartDto>(`carts/item/${itemId}`);
   }
+
+  removeItem(itemId: number) {
+    return this.backendService.delete<CartDto>(`carts/item/${itemId}`);
+  }
 }

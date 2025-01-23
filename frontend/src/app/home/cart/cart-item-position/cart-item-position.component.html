@@ -1,5 +1,8 @@
 <div *ngIf="item() as item" class="position">
-  <span class="item">{{ item.pieces }}x {{ item.itemName }}</span>
+    <img src="assets/minus.png" alt="add item icon" class="icon" (click)="removeItem.emit(item.itemId)" />
+    <span class="item">
+      {{ item.pieces }}x {{ item.itemName }}
+  </span>
   <span class="price">{{ item.price | number:'1.2-2' }} $</span>
   <span class="total">
     <s *ngIf="item.totalWithoutOffers !== item.total">{{ item.totalWithoutOffers  | number:'1.2-2' }} $</s>

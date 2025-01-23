@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {CartItemDto} from "../../../dto/CartDto";
 import {DecimalPipe, NgIf} from "@angular/common";
 
@@ -14,4 +14,5 @@ import {DecimalPipe, NgIf} from "@angular/common";
 })
 export class CartItemPositionComponent {
   item = input.required<CartItemDto>();
+  removeItem = output<number>();
 }

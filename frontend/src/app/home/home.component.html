@@ -3,5 +3,5 @@
 </div>
 <div class="content">
   <app-item-container [items]="itemsWithOffers()" (addItem)="addItem($event)" />
-  <app-cart [cart]="cart$ | async" />
+  <app-cart [cart]="cart$ | async" (removeItem)="removeItem($event)" />
 </div>

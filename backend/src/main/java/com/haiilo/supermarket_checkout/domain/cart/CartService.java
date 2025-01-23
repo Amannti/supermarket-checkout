@@ -65,6 +65,33 @@ public class CartService {
         return this.cartRepository.save(cart);
     }
 
+    public Cart removeItem(Long itemId) {
+        var cart = this.cartRepository.findByPaidIsFalse();
+        if (cart == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
+        }
+
+        var itemToRemoveOpt = cart.getItems()
+                .stream()
+                .filter(item -> item.getItemId().equals(itemId))
+                .findFirst();
+
+        if (itemToRemoveOpt.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item " + itemId + " not found");
+        }
+
+        var itemToRemove = itemToRemoveOpt.get();
+        if (itemToRemove.getPieces() == 1) {
+            cart.getItems().remove(itemToRemove);
+        } else {
+            itemToRemove.setPieces(itemToRemove.getPieces() - 1);
+        }
+
+        calculateTotal(cart);
+
+        return this.cartRepository.save(cart);
+    }
+
     private void calculateTotal(Cart cart) {
         double total = 0;
         var offers = offerService.findAll();
@@ -85,7 +112,7 @@ public class CartService {
         var pieces = item.getPieces();
 
         for (Offer offer : offers) {
-            if (offer.getPieces() <= pieces) { // ToDo what is if you have the same offer twice regarding to the pieces
+            if (offer.getPieces() <= pieces) { // ToDo what is if you have the same offer twice regarding to the pieces (hint maybe while until pieces are smaller than offer)
                 totalForItem += offer.getBundlePrice();
                 pieces -= offer.getPieces();
                 item.getUsedOfferIds().add(offer.getId());
