@@ -30,6 +30,16 @@ public class CartService {
         return this.cartRepository.findByPaidIsFalse();
     }
 
+    public void payCart() {
+        var cart = this.cartRepository.findByPaidIsFalse();
+        if (cart == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
+        }
+
+        cart.setPaid(true);
+        this.cartRepository.save(cart);
+    }
+
     public Cart addItem(Long itemId) {
         var cart = this.cartRepository.findByPaidIsFalse();
         if (cart == null) {

@@ -35,4 +35,10 @@ public class CartController {
     public ResponseEntity<CartDto> removeItemFromCart(@PathVariable final long itemId) {
         return ResponseEntity.ok(cartMapper.map(cartService.removeItem(itemId)));
     }
+
+    @PutMapping()
+    public ResponseEntity<Void> payCart() {
+        cartService.payCart();
+        return ResponseEntity.ok().build();
+    }
 }
