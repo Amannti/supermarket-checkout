@@ -1,4 +1,10 @@
 package com.haiilo.supermarket_checkout.domain.cart;
 
-public class CartRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CartRepository extends JpaRepository<Cart, Long> {
+
+    Cart findByPaidIsTrue();
 }
