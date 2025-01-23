@@ -2,8 +2,6 @@
   <h1>Welcome to your Supermarket checkout</h1>
 </div>
 <div class="content">
-  <app-item-container [items]="itemsWithOffers()" />
-  <div>
-    CART WILL BE IMPLEMENTED
-  </div>
+  <app-item-container [items]="itemsWithOffers()" (addItem)="addItem($event)" />
+  <app-cart [cart]="cart$ | async" />
 </div>

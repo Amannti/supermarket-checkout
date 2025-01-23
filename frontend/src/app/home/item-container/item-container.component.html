@@ -1,4 +1,4 @@
 <div *ngIf="items() as items">
   <span *ngIf="items.length === 0">No items available</span>
-  <app-item-card *ngFor="let item of items" [item]="item" />
+  <app-item-card *ngFor="let item of items" [item]="item" (addItem)="addItem.emit($event)" />
 </div>

@@ -1,6 +1,5 @@
 h1 {
   text-align: center;
-  background-color: #a3b8b7;
 }
 
 .content {
@@ -9,10 +8,10 @@ h1 {
   height: 100%;
 
   > app-item-container {
-    width: 75%;
+    width: 60%;
   }
 
-  > div { // Will be the cart later
-    width: 25%;
+  > app-cart { // Will be the cart later
+    width: 40%;
   }
 }
