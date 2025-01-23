@@ -1,10 +1,7 @@
 package com.haiilo.supermarket_checkout.domain.cart;
 
-import com.haiilo.supermarket_checkout.domain.offer.OfferDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -18,5 +15,7 @@ public class CartItemDto {
 
     private int pieces;
 
-    private List<OfferDto> usedOffers;
+    private double totalWithoutOffers;
+
+    private double total;
 }

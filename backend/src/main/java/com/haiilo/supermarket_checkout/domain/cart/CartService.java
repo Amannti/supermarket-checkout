@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,7 +46,14 @@ public class CartService {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item " + itemId + " not found");
             }
 
-            cart.getItems().add(new CartItem(item.getId(), item.getPrice(), 1, List.of()));
+            cart.getItems().add(new CartItem(
+                    item.getId(),
+                    item.getPrice(),
+                    1,
+                    List.of(),
+                    0,
+                    0
+            ));
         }
 
         calculateTotal(cart);
@@ -57,28 +65,34 @@ public class CartService {
         double total = 0;
         var offers = offerService.findAll();
         for (CartItem item : cart.getItems()) {
-            total += calculatePriceForItem(offers, item);
+            calculatePriceForItem(offers
+                    .stream()
+                    .filter(offer -> offer.getItem().getId().equals(item.getItemId()))
+                    .toList(), item);
+            total += item.getTotal();
         }
 
         cart.setTotal(total);
     }
 
-    private double calculatePriceForItem(List<Offer> offers, CartItem item) {
-        double priceForItem = 0;
+    private void calculatePriceForItem(List<Offer> offers, CartItem item) {
+        double totalForItem = 0;
+        item.setUsedOfferIds(new ArrayList<>());
         var pieces = item.getPieces();
 
         for (Offer offer : offers) {
             if (offer.getPieces() <= pieces) { // ToDo what is if you have the same offer twice regarding to the pieces
-                priceForItem += offer.getBundlePrice();
+                totalForItem += offer.getBundlePrice();
                 pieces -= offer.getPieces();
                 item.getUsedOfferIds().add(offer.getId());
             }
         }
 
         if (pieces > 0) {
-            priceForItem += (pieces * item.getOriginPrice());
+            totalForItem += (pieces * item.getPrice());
         }
 
-        return priceForItem;
+        item.setTotalWithoutOffers(item.getPieces() * item.getPrice());
+        item.setTotal(totalForItem);
     }
 }

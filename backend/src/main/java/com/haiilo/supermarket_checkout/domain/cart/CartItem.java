@@ -13,10 +13,14 @@ public class CartItem {
 
     private Long itemId;
 
-    private double originPrice;
+    private double price;
 
     private int pieces;
 
     private List<Long> usedOfferIds;
+
+    private double totalWithoutOffers;
+
+    private double total;
 }
 
