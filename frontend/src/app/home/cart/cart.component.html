@@ -11,7 +11,7 @@
     <div class="total">
       <b>Total: {{ cart.total | number:'1.2-2' }} $</b>
     </div>
-    <button>Pay</button>
+    <button (click)="payCart.emit()">Pay</button>
   </div>
   <div *ngIf="!cart()">
     Your cart is empty, please add some items!

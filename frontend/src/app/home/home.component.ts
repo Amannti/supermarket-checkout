@@ -40,4 +40,11 @@ export class HomeComponent {
   removeItem(itemId: number) {
     this.cart$ = this.cartService.removeItem(itemId);
   }
+
+  payCart() {
+    this.cartService.payCart().subscribe(() => {
+      alert("You paid your cart");
+      this.cart$ = this.cartService.getCart();
+    })
+  }
 }

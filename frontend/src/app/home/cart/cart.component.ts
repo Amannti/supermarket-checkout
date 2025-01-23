@@ -18,4 +18,5 @@ import {CartItemPositionComponent} from "./cart-item-position/cart-item-position
 export class CartComponent {
   cart = input.required<CartDto | null>();
   removeItem = output<number>();
+  payCart = output<void>();
 }

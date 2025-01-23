@@ -9,6 +9,10 @@ export class CartService {
     return this.backendService.get<CartDto>('carts');
   }
 
+  payCart() {
+    return this.backendService.put<void>('carts');
+  }
+
   addItem(itemId: number) {
     return this.backendService.post<CartDto>(`carts/item/${itemId}`);
   }
