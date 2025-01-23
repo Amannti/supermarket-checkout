@@ -1,4 +1,4 @@
-package com.haiilo.supermarket_checkout.dto;
+package com.haiilo.supermarket_checkout.domain.offer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
