@@ -26,3 +26,28 @@ The interview exercise that we will use during in person technical interviews is
 The checkout accepts the items in any order, so that if we scan an apple, a banana and another apple, we'll recognise two apples and apply the discount of 2 for 45.
 
 Please work as you would do in your usual job. We don't accept one single commit. We want to see the steps you would do usually.
+
+# How to start the app  
+
+**Requirements:** docker, gradle, java 21, node 18, npm 9
+
+1. Go to db folder and execute ```docker compose up -d```
+2. Go to backend folder and execute ```./gradlew bootRun```
+3. Use new terminal, go to frontend folder, execute ```npm i``` and execute ```ng serve```
+
+Optional: Start everything with your IDE, if possible
+
+# Possible next steps  
+
+- Admin section
+  - See all paid carts and which offers were used
+  - Change item prices
+  - Add items
+  - Enable or disable offers
+  - Add new offers
+- Check out code for some refactorings
+- Write tests for the calculation part in the backend
+
+# Conclusion
+
+Very cool exercise, but next time I would focus more on the calculation part with tests and less on the frontend part. 
