@@ -10,6 +10,10 @@ export class BackendService {
     return this.http.post<T>(this.BASE_URL + url, body);
   }
 
+  put<T>(url: string, body?: any) {
+    return this.http.put<T>(this.BASE_URL + url, body);
+  }
+
   get<T>(url: string) {
     return this.http.get<T>(this.BASE_URL + url);
   }
