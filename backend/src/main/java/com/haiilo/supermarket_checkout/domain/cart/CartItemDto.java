@@ -18,5 +18,5 @@ public class CartItemDto {
 
     private int pieces;
 
-    private List<OfferDto> userOffers;
+    private List<OfferDto> usedOffers;
 }
