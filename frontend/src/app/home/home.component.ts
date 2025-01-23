@@ -29,7 +29,7 @@ export class HomeComponent {
   private readonly itemService = inject(ItemService);
   private readonly cartService = inject(CartService);
 
-  cart$ = of<CartDto>();
+  cart$: Observable<CartDto> = this.cartService.getCart();
 
   itemsWithOffers: Signal<ItemWithOffersDto[] | undefined> = toSignal(this.itemService.getItems());
 
