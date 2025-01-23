@@ -4,19 +4,19 @@ import {DecimalPipe, NgForOf, NgIf} from "@angular/common";
 import {CartItemPositionComponent} from "./cart-item-position/cart-item-position.component";
 
 @Component({
-  selector: 'app-cart',
-  standalone: true,
-  imports: [
-    NgIf,
-    CartItemPositionComponent,
-    NgForOf,
-    DecimalPipe
-  ],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss'
+    selector: 'app-cart',
+    standalone: true,
+    imports: [
+        NgIf,
+        CartItemPositionComponent,
+        NgForOf,
+        DecimalPipe
+    ],
+    templateUrl: './cart.component.html',
+    styleUrl: './cart.component.scss'
 })
 export class CartComponent {
-  cart = input.required<CartDto | null>();
-  removeItem = output<number>();
-  payCart = output<void>();
+    cart = input.required<CartDto | null>();
+    removeItem = output<number>();
+    payCart = output<void>();
 }

@@ -1,4 +1,4 @@
-import {Component, inject, Signal, signal} from '@angular/core';
+import {Component, inject, Signal} from '@angular/core';
 import {ItemContainerComponent} from "./item-container/item-container.component";
 import {ItemService} from "../service/item.service";
 import {BackendService} from "../service/backend.service";
@@ -7,7 +7,7 @@ import {CartService} from "../service/cart.service";
 import {CartDto} from "../dto/CartDto";
 import {CartComponent} from "./cart/cart.component";
 import {AsyncPipe} from "@angular/common";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {ItemWithOffersDto} from "../dto/ItemWithOffersDto";
 import {toSignal} from "@angular/core/rxjs-interop";
 
