@@ -5,6 +5,10 @@ import {CartDto} from "../dto/CartDto";
 export class CartService {
   private backendService = inject(BackendService);
 
+  getCart() {
+    return this.backendService.get<CartDto>('carts');
+  }
+
   addItem(itemId: number) {
     return this.backendService.post<CartDto>(`carts/item/${itemId}`);
   }

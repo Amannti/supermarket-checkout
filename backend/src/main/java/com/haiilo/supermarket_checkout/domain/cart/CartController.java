@@ -17,6 +17,15 @@ public class CartController {
         this.cartMapper = cartMapper;
     }
 
+    @GetMapping
+    public ResponseEntity<CartDto> getCurrentCart() {
+        var cart = cartService.getCurrentCart();
+        if (cart == null) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.ok(cartMapper.map(cart));
+    }
+
     @PostMapping("item/{itemId}")
     public ResponseEntity<CartDto> addItemToCart(@PathVariable final long itemId) {
         return ResponseEntity.ok(cartMapper.map(cartService.addItem(itemId)));

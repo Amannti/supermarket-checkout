@@ -26,6 +26,10 @@ public class CartService {
         this.offerService = offerService;
     }
 
+    public Cart getCurrentCart() {
+        return this.cartRepository.findByPaidIsFalse();
+    }
+
     public Cart addItem(Long itemId) {
         var cart = this.cartRepository.findByPaidIsFalse();
         if (cart == null) {

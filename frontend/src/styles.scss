@@ -3,5 +3,8 @@ body {
   font-family: 'Trebuchet MS', sans-serif;
   display: block;
   height: 100%;
-  background-color: #d9d8cf;
+
+  background-image: url('/assets/logo.png');
+  background-size: cover;
+  background-position: top;
 }
