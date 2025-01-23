@@ -1,6 +1,6 @@
 <div class="card" *ngIf="item() as item">
   <div class="header">
-    <span>{{ item.name }} <b>{{ item.price }} $</b></span>
+    <span>{{ item.name }} <b>{{ item.price | number:'1.2-2' }} $</b></span>
     <img src="assets/plus.png" alt="add item icon" class="icon" (click)="addItem.emit(item.id)" />
   </div>
   <div class="offers" *ngIf="item.offers.length > 0">
