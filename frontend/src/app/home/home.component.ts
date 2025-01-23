@@ -36,4 +36,8 @@ export class HomeComponent {
   addItem(itemId: number) {
     this.cart$ = this.cartService.addItem(itemId);
   }
+
+  removeItem(itemId: number) {
+    this.cart$ = this.cartService.removeItem(itemId);
+  }
 }
