@@ -30,4 +30,9 @@ public class CartController {
     public ResponseEntity<CartDto> addItemToCart(@PathVariable final long itemId) {
         return ResponseEntity.ok(cartMapper.map(cartService.addItem(itemId)));
     }
+
+    @PutMapping("item/{itemId}")
+    public ResponseEntity<CartDto> removeItemFromCart(@PathVariable final long itemId) {
+        return ResponseEntity.ok(cartMapper.map(cartService.removeItem(itemId)));
+    }
 }
