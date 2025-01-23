@@ -27,24 +27,24 @@ public class CartService {
     }
 
     public Cart getCurrentCart() {
-        return this.cartRepository.findByPaidIsFalse();
+        var cart = this.cartRepository.findByPaidIsFalse();
+        if (cart == null) {
+            cart = new Cart();
+            this.cartRepository.save(cart);
+        }
+
+        return cart;
     }
 
     public void payCart() {
-        var cart = this.cartRepository.findByPaidIsFalse();
-        if (cart == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
-        }
+        var cart = getCartOrThrowNotFound();
 
         cart.setPaid(true);
         this.cartRepository.save(cart);
     }
 
     public Cart addItem(Long itemId) {
-        var cart = this.cartRepository.findByPaidIsFalse();
-        if (cart == null) {
-            cart = new Cart();
-        }
+        var cart = getCartOrThrowNotFound();
 
         var itemOpt = cart.getItems()
                 .stream()
@@ -76,10 +76,7 @@ public class CartService {
     }
 
     public Cart removeItem(Long itemId) {
-        var cart = this.cartRepository.findByPaidIsFalse();
-        if (cart == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
-        }
+        var cart = getCartOrThrowNotFound();
 
         var itemToRemoveOpt = cart.getItems()
                 .stream()
@@ -100,6 +97,15 @@ public class CartService {
         calculateTotal(cart);
 
         return this.cartRepository.save(cart);
+    }
+
+    private Cart getCartOrThrowNotFound() {
+        var cart = this.cartRepository.findByPaidIsFalse();
+        if (cart == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
+        }
+
+        return cart;
     }
 
     private void calculateTotal(Cart cart) {

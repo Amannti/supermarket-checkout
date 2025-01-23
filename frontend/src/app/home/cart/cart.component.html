@@ -1,19 +1,20 @@
 <div>
-  <div *ngIf="cart() as cart" class="cart"> <!-- ToDo what if cart is there but without items -->
-    <div class="header">
-      <span>Item</span>
-      <span>Price per Item</span>
-      <span>Total</span>
+    <div *ngIf="cart()?.items.length > 0" class="cart">
+        <div class="header">
+            <span>Item</span>
+            <span>Price per Item</span>
+            <span>Total</span>
+        </div>
+        <hr>
+        <app-cart-item-position *ngFor="let item of cart()?.items" [item]="item"
+                                (removeItem)="removeItem.emit($event)"/>
+        <hr>
+        <div class="total">
+            <b>Total: {{ cart()?.total | number:'1.2-2' }} $</b>
+        </div>
+        <button (click)="payCart.emit()">Pay</button>
     </div>
-    <hr>
-    <app-cart-item-position *ngFor="let item of cart.items" [item]="item" (removeItem)="removeItem.emit($event)"/>
-    <hr>
-    <div class="total">
-      <b>Total: {{ cart.total | number:'1.2-2' }} $</b>
+    <div *ngIf="cart()?.items?.length === 0">
+        Your cart is empty, please add some items!
     </div>
-    <button (click)="payCart.emit()">Pay</button>
-  </div>
-  <div *ngIf="!cart()">
-    Your cart is empty, please add some items!
-  </div>
 </div>

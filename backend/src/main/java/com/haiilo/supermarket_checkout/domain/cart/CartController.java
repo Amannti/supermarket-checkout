@@ -20,9 +20,6 @@ public class CartController {
     @GetMapping
     public ResponseEntity<CartDto> getCurrentCart() {
         var cart = cartService.getCurrentCart();
-        if (cart == null) {
-            return ResponseEntity.ok().build();
-        }
         return ResponseEntity.ok(cartMapper.map(cart));
     }
 
