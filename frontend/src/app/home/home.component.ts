@@ -43,7 +43,7 @@ export class HomeComponent {
 
   payCart() {
     this.cartService.payCart().subscribe(() => {
-      alert("You paid your cart");
+      alert("Your cart is paid");
       this.cart$ = this.cartService.getCart();
     })
   }

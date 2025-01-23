@@ -128,7 +128,7 @@ public class CartService {
         var pieces = item.getPieces();
 
         for (Offer offer : offers) {
-            if (offer.getPieces() <= pieces) { // ToDo what is if you have the same offer twice regarding to the pieces (hint maybe while until pieces are smaller than offer)
+            while (offer.getPieces() <= pieces) {
                 totalForItem += offer.getBundlePrice();
                 pieces -= offer.getPieces();
                 item.getUsedOfferIds().add(offer.getId());
