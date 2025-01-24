@@ -31,9 +31,18 @@ Please work as you would do in your usual job. We don't accept one single commit
 
 **Requirements:** docker, gradle, java 21, node 18, npm 9
 
-1. Go to db folder and execute ```docker compose up -d```
-2. Go to backend folder and execute ```./gradlew bootRun```
-3. Use new terminal, go to frontend folder, execute ```npm i``` and execute ```ng serve```
+1. Database
+   1. ```cd ~/db```
+   2. Execute ```docker compose up -d``` (ensure your docker is running and your ports a free)
+2. Backend
+   1. ```cd ~/backend```
+   2. Execute ```gradle wrapper```
+   3. Execute ```./gradlew bootRun```
+3. Frontend
+   1. Use new terminal
+   2. ```cd ~/frontend```
+   3. Execute ```npm i```
+   4. Execute ```ng serve```
 
 Optional: Start everything with your IDE, if possible
 
@@ -47,6 +56,11 @@ Optional: Start everything with your IDE, if possible
   - Add new offers
 - Check out code for some refactorings
 - Write tests for the calculation part in the backend
+- Add error handling in frontend
+- Add something like loading spinners in frontend
+- Improve Styling
+- Think about linting 
+- Write documentation and update planning notes
 
 # Conclusion
 
